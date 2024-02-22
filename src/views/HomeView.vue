@@ -1134,8 +1134,8 @@
 </template>
 
 <script>
-export default {
-  name: "HomePage",
-  components: {},
-};
+  export default {
+    name: "HomePage",
+    components: {},
+  };
 </script>

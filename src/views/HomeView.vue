@@ -3,9 +3,9 @@
   <div id="wrapper">
     <the-banner></the-banner>
     <!-- Content -->
-    <the-categories></the-categories>
-    <the-places></the-places>
-    <the-reviews></the-reviews>
+    <the-category></the-category>
+    <the-place></the-place>
+    <the-review></the-review>
     <the-plan></the-plan>
     <the-blog></the-blog>
     <!-- Back To Top Button -->
@@ -16,9 +16,9 @@
 
 <script setup>
   import TheBanner from '../components/TheBanner.vue';
-  import TheCategories from "@/components/TheCategories.vue";
-  import ThePlaces from "@/components/ThePlaces.vue";
-  import TheReviews from "@/components/TheReviews.vue";
+  import TheCategory from "@/components/TheCategory.vue";
+  import ThePlace from "@/components/ThePlace.vue";
+  import TheReview from "@/components/TheReview.vue";
   import ThePlan from "@/components/ThePlan.vue";
   import TheBlog from "@/components/TheBlog.vue";
 </script>

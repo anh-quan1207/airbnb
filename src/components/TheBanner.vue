@@ -3,10 +3,10 @@
   import { onMounted } from 'vue';
   onMounted(() => {
     const typed = new Typed('.typed-words', {
-      strings: ["Attractions"," Restaurants"," Hotels"],
+      strings: ["Restaurants"," Attractions"," Hotels"],
       typeSpeed: 80,
       backSpeed: 80,
-      backDelay: 4000,
+      backDelay: 2000,
       startDelay: 1000,
       loop: true,
       showCursor: true

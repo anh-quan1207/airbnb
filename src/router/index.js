@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import BlogView from "@/views/BlogView.vue";
-import RoomView from "@/views/RoomView.vue";
-import RoomDetailView from "@/views/RoomDetailView.vue";
+import BlogView from "@/views/Blog/BlogView.vue";
+import RoomView from "@/views/Room/RoomView.vue";
+import RoomDetailView from "@/views/Room/RoomDetailView.vue";
 import ContactView from "@/views/ContactView.vue";
+import AuthView from "@/views/Auth/AuthView.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/contact",
     name: "contact",
     component: ContactView,
+  },
+  {
+    path: "/auth",
+    name: "auth",
+    component: AuthView,
   },
 ];
 

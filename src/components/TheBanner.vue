@@ -1,6 +1,7 @@
 <script setup>
   import Typed from 'typed.js';
   import { onMounted } from 'vue';
+  import TheMainSearch from "@/components/TheMainSearch.vue";
   onMounted(() => {
     const typed = new Typed('.typed-words', {
       strings: ["Restaurants"," Attractions"," Hotels"],
@@ -31,48 +32,7 @@
               <span class="typed-words"></span>
             </h2>
             <h4>Expolore top-rated attractions, activities and more</h4>
-
-            <div class="main-search-input">
-              <div class="main-search-input-item">
-                <input
-                    type="text"
-                    placeholder="What are you looking for?"
-                    value=""
-                />
-              </div>
-
-              <div class="main-search-input-item location">
-                <div id="autocomplete-container">
-                  <input
-                      id="autocomplete-input"
-                      type="text"
-                      placeholder="Location"
-                  />
-                </div>
-                <a href="#"><i class="fa fa-map-marker"></i></a>
-              </div>
-
-              <div class="main-search-input-item">
-                <select
-                    data-placeholder="All Categories"
-                    class="chosen-select"
-                >
-                  <option>All Categories</option>
-                  <option>Shops</option>
-                  <option>Hotels</option>
-                  <option>Restaurants</option>
-                  <option>Fitness</option>
-                  <option>Events</option>
-                </select>
-              </div>
-
-              <button
-                  class="button"
-                  onclick="window.location.href='listings-half-screen-map-list.html'"
-              >
-                Search
-              </button>
-            </div>
+            <the-main-search></the-main-search>
           </div>
         </div>
 

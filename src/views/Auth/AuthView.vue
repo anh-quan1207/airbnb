@@ -1,5 +1,10 @@
 <script setup>
+  import { ref } from 'vue';
 
+  const currentTab = ref('login');
+  function setTab(tabName) {
+    currentTab.value = tabName;
+  }
 </script>
 
 <template>
@@ -14,14 +19,18 @@
     <div class="sign-in-form style-1">
 
       <ul class="tabs-nav">
-        <li><a href="#tab1">Log In</a></li>
-        <li><a href="#tab2">Register</a></li>
+        <li :class="{ active: currentTab === 'login' }">
+          <a href="javascript:void(0)" @click="setTab('login')">Log In</a>
+        </li>
+        <li :class="{ active: currentTab === 'register' }">
+          <a href="javascript:void(0)" @click="setTab('register')">Register</a>
+        </li>
       </ul>
 
       <div class="tabs-container alt">
 
         <!-- Login -->
-        <div class="tab-content" id="tab1" style="display: none;">
+        <div class="tab-content" v-show="currentTab === 'login'" id="tab1">
           <form method="post" class="login">
 
             <p class="form-row form-row-wide">
@@ -53,7 +62,7 @@
         </div>
 
         <!-- Register -->
-        <div class="tab-content" id="tab2" style="display: none;">
+        <div class="tab-content" v-show="currentTab === 'register'" id="tab2">
 
           <form method="post" class="register">
 
@@ -97,5 +106,7 @@
 </template>
 
 <style scoped lang="scss">
-
+  .active a {
+    color: red; /* Hoặc bất kỳ định nghĩa style nào bạn muốn để làm nổi bật tab đang được chọn */
+  }
 </style>

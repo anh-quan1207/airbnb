@@ -161,11 +161,12 @@ import RoomList from "@/components/Room/RoomList.vue";
       </div>
       <div class="fs-inner-container map-fixed">
         <!-- Map -->
-        <div id="map-container">
-          <div id="map" data-map-zoom="9" data-map-scroll="true">
-            <!-- map goes here -->
-          </div>
-        </div>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.401046508825!2d105.77935497613515!3d21.01663328819338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454aad14949b5%3A0x50fde6fabfba0a79!2zSGFuZGljbyBUb3dlciwgUGjhuqFtIEjDuW5nLCBN4buFIFRyw6wsIFThu6sgTGnDqm0sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1708684038471!5m2!1svi!2s"
+            style="border: 0; width: 100%; height: 100%"
+            allowfullscreen=""
+            loading="lazy"
+        ></iframe>
       </div>
     </div>
 

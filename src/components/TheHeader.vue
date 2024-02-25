@@ -12,14 +12,14 @@
         <!-- Left Side Content -->
         <div class="left-side">
           <!-- Logo -->
-          <div id="logo">
-            <a href="index.html"
-            ><img
-                src="images/logo2.png"
-                data-sticky-logo="images/logo.png"
-                alt=""
-            /></a>
-          </div>
+<!--          <div id="logo">-->
+<!--            <a href="index.html"-->
+<!--            ><img-->
+<!--                src="images/logo2.png"-->
+<!--                data-sticky-logo="images/logo.png"-->
+<!--                alt=""-->
+<!--            /></a>-->
+<!--          </div>-->
 
           <!-- Mobile Navigation -->
           <div class="mmenu-trigger">

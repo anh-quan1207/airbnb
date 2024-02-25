@@ -3,7 +3,7 @@
   import { onMounted } from 'vue';
   import TheMainSearch from "@/components/TheMainSearch.vue";
   onMounted(() => {
-    const typed = new Typed('.typed-words', {
+    new Typed('.typed-words', {
       strings: ["Restaurants"," Attractions"," Hotels"],
       typeSpeed: 80,
       backSpeed: 80,

@@ -1,6 +1,12 @@
 <script setup>
-
 import RoomList from "@/components/Room/RoomList.vue";
+import { useStore } from "vuex";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const store = useStore();
+store.dispatch("room/getRoomListAction", route.params.locationId);
+
 </script>
 
 <template>

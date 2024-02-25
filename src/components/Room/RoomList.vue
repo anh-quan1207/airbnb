@@ -1,6 +1,9 @@
 <script setup>
-
-import RoomListItem from "@/components/Room/RoomListItem.vue";
+  import RoomListItem from "@/components/Room/RoomListItem.vue";
+  import { useStore } from "vuex";
+  import { computed } from "vue";
+  const store = useStore();
+  const roomList = computed(() => store.state.room.roomList);
 </script>
 
 <template>
@@ -15,14 +18,9 @@ import RoomListItem from "@/components/Room/RoomListItem.vue";
 
     </div>
 
-
     <!-- Listings -->
-    <div class="row fs-listings">
-      <room-list-item></room-list-item>
-      <room-list-item></room-list-item>
-      <room-list-item></room-list-item>
-      <room-list-item></room-list-item>
-      <room-list-item></room-list-item>
+    <div class="row fs-listings" v-if="roomList.length > 0">
+      <room-list-item v-for="(room, index) in roomList" :key="index" :room="room"></room-list-item>
     </div>
     <!-- Listings Container / End -->
 

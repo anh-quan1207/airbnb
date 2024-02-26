@@ -1,14 +1,18 @@
-import {getRoomListByLocationAPI} from "@/api/room";
+import {getRoomDetailAPI, getRoomListByLocationAPI} from "@/api/room";
 
 const state = () => {
   return {
     roomList: [],
+    roomDetail: [],
   }
 };
 
 const mutations = {
   setRoomListMutation(state, payload) {
     state.roomList = payload;
+  },
+  setRoomDetailMutation(state, payload) {
+    state.roomDetail = payload;
   }
 };
 
@@ -17,6 +21,11 @@ const actions = {
     const res = await getRoomListByLocationAPI(payload);
     console.log(res);
     context.commit("setRoomListMutation", res);
+  },
+  async getRoomDetailAction(context, payload) {
+    const data= await getRoomDetailAPI(payload);
+    console.log(data);
+    context.commit("setRoomDetailMutation", data);
   }
 };
 

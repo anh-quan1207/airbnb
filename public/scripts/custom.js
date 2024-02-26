@@ -1341,17 +1341,21 @@ $(document).ready(function(){
       $('.listing-nav-container.cloned .listing-nav').css('width', containerWidth);
     });
 
-	if(document.getElementById("listing-nav") !== null) {
-		$(window).scroll(function(){
-			var window_top = $(window).scrollTop();
-			var div_top = $('.listing-nav').not('.listing-nav-container.cloned .listing-nav').offset().top + 90;
-		    if (window_top > div_top) {
-		        $('.listing-nav-container.cloned').addClass('stick');
-		    } else {
-		        $('.listing-nav-container.cloned').removeClass('stick');
-		    }
-		});
-	}
+	$(document).ready(function() {
+		var listingNavElement = document.getElementById("listing-nav");
+		if (listingNavElement !== null) {
+			$(window).scroll(function(){
+				var window_top = $(window).scrollTop();
+				var div_top = $('.listing-nav').not('.listing-nav-container.cloned .listing-nav').offset().top + 90;
+				if (window_top > div_top) {
+					$('.listing-nav-container.cloned').addClass('stick');
+				} else {
+					$('.listing-nav-container.cloned').removeClass('stick');
+				}
+			});
+		}
+	});
+
 
 	$( ".listing-nav-container" ).clone(true).addClass('cloned').prependTo("body");
 

@@ -1,5 +1,14 @@
 <script setup>
 
+  import {useStore} from "vuex";
+  import {useRoute} from "vue-router";
+  import {computed} from "vue";
+
+  const route = useRoute();
+  const store = useStore();
+  store.dispatch("room/getRoomDetailAction", route.params.roomId);
+  const roomDetail = computed(() => store.state.room.roomDetail);
+  console.log(roomDetail);
 </script>
 
 <template>
@@ -18,19 +27,18 @@
           <!-- Titlebar -->
           <div id="titlebar" class="listing-titlebar">
             <div class="listing-titlebar-title">
-              <h2>Sunny and Modern Apartment<span class="listing-tag">Apartments</span></h2>
-              <span>
-						<a href="#listing-location" class="listing-address">
-							<i class="fa fa-map-marker"></i>
-							2726 Shinn Street, New York
-						</a>
-					</span>
+              <h2>{{ roomDetail.name }}<span class="listing-tag">Apartments</span></h2>
+              <span v-if="roomDetail.locationId">
+                <a href="#listing-location" class="listing-address">
+                  <i class="fa fa-map-marker"></i>
+                  {{ roomDetail.locationId.province }}, {{ roomDetail.locationId.country }}
+                </a>
+              </span>
               <div class="star-rating" data-rating="5">
                 <div class="rating-counter"><a href="#listing-reviews">(31 reviews)</a></div>
               </div>
             </div>
           </div>
-
           <!-- Listing Nav -->
           <div id="listing-nav" class="listing-nav-container">
             <ul class="listing-nav">
@@ -47,19 +55,14 @@
 
             <!-- Apartment Description -->
             <ul class="apartment-details">
-              <li>2 rooms</li>
-              <li>1 bedroom</li>
-              <li>1 bed</li>
-              <li>1 bathroom</li>
+              <li>{{ roomDetail.guest }} guest</li>
+              <li>{{ roomDetail.bedRoom }} bedroom</li>
+              <li>{{ roomDetail.bathRoom }} bathRoom</li>
             </ul>
 
             <!-- Description -->
             <p>
-              Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.
+              {{ roomDetail.description }}
             </p>
 
 
@@ -102,12 +105,7 @@
           <!-- Slider -->
           <div id="listing-gallery" class="listing-section">
             <h3 class="listing-desc-headline margin-top-70">Gallery</h3>
-            <div class="listing-slider-small mfp-gallery-container margin-bottom-0">
-              <a href="images/single-listing-02a.jpg" data-background-image="images/single-listing-02a.jpg" class="item mfp-gallery" title="Title 2"></a>
-              <a href="images/single-listing-01a.jpg" data-background-image="images/single-listing-01a.jpg" class="item mfp-gallery" title="Title 1"></a>
-              <a href="images/single-listing-03a.jpg" data-background-image="images/single-listing-03a.jpg" class="item mfp-gallery" title="Title 3"></a>
-              <a href="images/single-listing-04a.jpg" data-background-image="images/single-listing-04a.jpg" class="item mfp-gallery" title="Title 3"></a>
-            </div>
+            <img :src="roomDetail.image" alt="">
           </div>
 
           <!-- Location -->
@@ -420,7 +418,7 @@
             </div>
 
             <!-- Book Now -->
-            <a href="pages-booking.html" class="button book-now fullwidth margin-top-5">Request To Book</a>
+            <router-link to="/booking/1" class="button book-now fullwidth margin-top-5">Request To Book</router-link>
 
             <!-- Estimated Cost -->
             <!-- 				<div class="booking-estimated-cost">
@@ -434,7 +432,7 @@
           <div class="boxed-widget margin-top-35">
             <div class="hosted-by-title">
               <h4><span>Hosted by</span> <a href="pages-user-profile.html">Tom Perrin</a></h4>
-              <a href="pages-user-profile.html" class="hosted-by-avatar"><img src="images/dashboard-avatar.jpg" alt=""></a>
+              <a href="pages-user-profile.html" class="hosted-by-avatar"><img src="" alt=""></a>
             </div>
             <ul class="listing-details-sidebar">
               <li><i class="sl sl-icon-phone"></i> (123) 123-456</li>

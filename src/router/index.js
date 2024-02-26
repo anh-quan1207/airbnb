@@ -4,7 +4,9 @@ import BlogView from "@/views/Blog/BlogView.vue";
 import RoomView from "@/views/Room/RoomView.vue";
 import RoomDetailView from "@/views/Room/RoomDetailView.vue";
 import ContactView from "@/views/ContactView.vue";
-import AuthView from "@/views/Auth/AuthView.vue";
+import SignIn from "@/views/Auth/SignIn.vue";
+import SignUp from "@/views/Auth/SignUp.vue";
+import BookingView from "@/views/Booking/BookingView.vue";
 
 const routes = [
   {
@@ -23,7 +25,7 @@ const routes = [
     component: RoomView,
   },
   {
-    path: "/room-detail",
+    path: "/room-detail/:roomId",
     name: "roomDetail",
     component: RoomDetailView,
   },
@@ -33,9 +35,19 @@ const routes = [
     component: ContactView,
   },
   {
-    path: "/auth",
-    name: "auth",
-    component: AuthView,
+    path: "/sign-in",
+    name: "sign-in",
+    component: SignIn,
+  },
+  {
+    path: "/sign-up",
+    name: "sign-up",
+    component: SignUp,
+  },
+  {
+    path: "/booking/:roomId",
+    name: "booking",
+    component: BookingView,
   },
 ];
 

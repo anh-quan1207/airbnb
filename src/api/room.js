@@ -2,7 +2,7 @@ export const getRoomListByLocationAPI = () => {
   return [
     {
       "id": 1,
-      "name": "Atemo Hotel",
+      "name": "Te amo Hotel",
       "guest": 3,
       "bedRoom": 2,
       "bathRoom": 2,
@@ -192,3 +192,25 @@ export const getRoomListByLocationAPI = () => {
     }
   ]
 };
+
+export const getRoomDetailAPI = () => {
+  return {
+    "id": 1,
+    "name": "Te amo Hotel",
+    "guest": 3,
+    "bedRoom": 2,
+    "bathRoom": 2,
+    "description": "Dịch vụ rất tốt",
+    "price": 500000,
+    "projector/TV": true,
+    "pool": true,
+    "locationId": {
+      "id": 1,
+      "name": "Vịnh Hạ Long",
+      "province": "Quảng Ninh",
+      "country": "Việt Nam",
+      "image": "https://airbnb.cybersoft.edu.vn/public/temp/1636703505621_cantho.jpg"
+    },
+    "image": "https://pix8.agoda.net/hotelImages/18482854/-1/3575de71d49084c5fabab5314a4f71fc.jpg?ca=23&ce=0&s=375x"
+  };
+}

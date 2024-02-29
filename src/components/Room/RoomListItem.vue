@@ -25,8 +25,8 @@
           <div class="listing-badge now-open">Now Open</div>
 
           <div class="listing-item-inner">
-            <h3>{{ room.name }}<i class="verified-icon"></i></h3>
-            <span>{{ room.locationId.province }}</span>
+            <h3>{{ room.room_name }}<i class="verified-icon"></i></h3>
+            <span v-if="room.locationId">{{ room.locationId.province }}</span>
             <div class="star-rating" data-rating="3.5">
               <div class="rating-counter">(12 reviews)</div>
             </div>

@@ -15,7 +15,6 @@ const mutations = {
 const actions = {
     async getLocationListAction(context, payload) {
         const res = await getLocationListAPI(payload);
-        console.log(res);
         context.commit("setLocationMutation", res);
     }
 };

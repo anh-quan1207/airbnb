@@ -2,17 +2,26 @@
   import { useStore } from 'vuex';
   import {computed, ref, watch} from "vue";
   import {useRouter} from "vue-router";
+  import {debounce} from "@/composables/debounce";
+  import {createSlugFromName} from "@/utils/createSlugFromName";
 
   const keyword = ref("");
   const store = useStore();
   const router = useRouter();
 
-  watch(keyword, (newKeyword) => {
+  const debouncedGetLocationList = debounce((newKeyword) => {
     store.dispatch("location/getLocationListAction", newKeyword);
+  }, 500);
+
+  watch(keyword, (newKeyword) => {
+    if (newKeyword !== '') {
+      debouncedGetLocationList(newKeyword);
+    }
   })
   const locationList = computed(() => store.state.location.locationList);
   const handleClickLocation = (location) => {
-    router.push(`/room/${location.id}` );
+    const slug = createSlugFromName(location.location_name);
+    router.push(`/room/${location.id}`);
   };
 
 </script>
@@ -32,7 +41,7 @@
       <ul v-if="locationList.length > 0 && keyword" class="list-location">
         <li v-for="(location, index) in locationList" :key="index" @click="handleClickLocation(location)">
           <span class="im im-icon-Location-2"></span>
-          <span class="location-item-tile">{{ location.name }}</span>
+          <span class="location-item-tile">{{ location.location_name }}</span>
         </li>
       </ul>
     </div>

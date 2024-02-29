@@ -24,7 +24,6 @@ const actions = {
   },
   async getRoomDetailAction(context, payload) {
     const data= await getRoomDetailAPI(payload);
-    console.log(data);
     context.commit("setRoomDetailMutation", data);
   }
 };

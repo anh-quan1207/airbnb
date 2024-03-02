@@ -3,7 +3,7 @@
   import {computed, ref, watch} from "vue";
   import {useRouter} from "vue-router";
   import {debounce} from "@/composables/debounce";
-  import {createSlugFromName} from "@/utils/createSlugFromName";
+  // import {createSlugFromName} from "@/utils/createSlugFromName";
 
   const keyword = ref("");
   const store = useStore();
@@ -20,7 +20,7 @@
   })
   const locationList = computed(() => store.state.location.locationList);
   const handleClickLocation = (location) => {
-    const slug = createSlugFromName(location.location_name);
+    // const slug = createSlugFromName(location.location_name);
     router.push(`/room/${location.id}`);
   };
 

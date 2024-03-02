@@ -26,11 +26,11 @@
           <!-- Titlebar -->
           <div id="titlebar" class="listing-titlebar">
             <div class="listing-titlebar-title">
-              <h2>{{ roomDetail.name }}<span class="listing-tag">Apartments</span></h2>
-              <span v-if="roomDetail.locationId">
+              <h2>{{ roomDetail.room_name }}<span class="listing-tag">Apartments</span></h2>
+              <span>
                 <a href="#listing-location" class="listing-address">
                   <i class="fa fa-map-marker"></i>
-                  {{ roomDetail.locationId.province }}, {{ roomDetail.locationId.country }}
+                  {{ roomDetail.location_name }}, {{ roomDetail.province_name }}
                 </a>
               </span>
               <div class="star-rating" data-rating="5">
@@ -55,8 +55,8 @@
             <!-- Apartment Description -->
             <ul class="apartment-details">
               <li>{{ roomDetail.guest }} guest</li>
-              <li>{{ roomDetail.bedRoom }} bedroom</li>
-              <li>{{ roomDetail.bathRoom }} bathRoom</li>
+              <li>{{ roomDetail.bed_room }} bedroom</li>
+              <li>{{ roomDetail.bed_room }} bathRoom</li>
             </ul>
 
             <!-- Description -->
@@ -95,8 +95,8 @@
               <li>Friendly workspace</li>
               <li>Instant Book</li>
               <li>Wireless Internet</li>
-              <li>Free parking on premises</li>
-              <li>Free parking on street</li>
+              <li>Free parking</li>
+              <li>Free parking</li>
             </ul>
           </div>
 

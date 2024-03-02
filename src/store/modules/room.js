@@ -19,7 +19,6 @@ const mutations = {
 const actions = {
   async getRoomListAction(context, payload) {
     const res = await getRoomListByLocationAPI(payload);
-    console.log(res);
     context.commit("setRoomListMutation", res);
   },
   async getRoomDetailAction(context, payload) {

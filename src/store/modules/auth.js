@@ -13,6 +13,14 @@ const mutations = {
     },
     setUserLoginMutation(state, payload) {
         state.userLogin = payload;
+        localStorage.setItem("userLogin", JSON.stringify(payload));
+    },
+    setUserLoginFromLocalStorage(state, payload) {
+        state.userLogin = payload;
+    },
+    logoutMutation(state) {
+        state.userLogin = {};
+        localStorage.removeItem("userLogin");
     }
 };
 
@@ -35,6 +43,19 @@ const actions = {
         } catch (error) {
             console.error("Network or server error:", error);
         }
+    },
+
+    loadUserLoginFromLocalStorageAction({commit}) {
+        let userLogin = {};
+        if (localStorage.getItem("userLogin")) {
+            userLogin = JSON.parse(localStorage.getItem("userLogin"));
+        }
+        commit("setUserLoginFromLocalStorage", userLogin)
+    },
+
+    logoutAction({ commit }, router) {
+        commit("logoutMutation");
+        router.push("/sign-in");
     }
 };
 

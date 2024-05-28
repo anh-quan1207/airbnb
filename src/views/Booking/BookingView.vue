@@ -1,13 +1,28 @@
 <script setup>
-  import {useStore} from "vuex";
-  import {useRoute} from "vue-router";
-  import {computed} from "vue";
+  import { useStore } from 'vuex';
+  import { useRoute } from 'vue-router';
+  import { computed, reactive } from 'vue';
 
-  const route = useRoute()
+  const route = useRoute();
   const store = useStore();
   store.dispatch("room/getRoomDetailAction", route.params.roomId);
+
   const roomDetail = computed(() => store.state.room.roomDetail);
-  console.log(roomDetail)
+  const timeBooking = reactive({
+    checkIn: "",
+    checkOut: ""
+  });
+
+  const user = JSON.parse(localStorage.getItem("userLogin"));
+  const handleBooking = () => {
+    const data = {
+      user_id: user.user.id,
+      room_id: route.params.roomId,
+      check_in: timeBooking.checkIn,
+      check_out: timeBooking.checkOut
+    };
+    store.dispatch("room/bookingRoonAction", data);
+  };
 </script>
 
 <template>
@@ -41,36 +56,19 @@
       <!-- Content -->
       <div class="col-lg-8 col-md-8 padding-right-30">
 
-        <h3 class="margin-top-0 margin-bottom-30">Personal Details</h3>
+        <h3 class="margin-top-0 margin-bottom-30">Time</h3>
 
         <div class="row">
 
           <div class="col-md-6">
             <label>Check In</label>
-            <input type="date"/>
+            <input type="date" v-model="timeBooking.checkIn"/>
           </div>
 
           <div class="col-md-6">
             <label>Check Out</label>
-            <input type="date"/>
+            <input type="date" v-model="timeBooking.checkOut"/>
           </div>
-
-          <div class="col-md-6">
-            <div class="input-with-icon medium-icons">
-              <label>E-Mail Address</label>
-              <input type="text" value="">
-              <i class="im im-icon-Mail"></i>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="input-with-icon medium-icons">
-              <label>Phone</label>
-              <input type="text" value="">
-              <i class="im im-icon-Phone-2"></i>
-            </div>
-          </div>
-
         </div>
 
 
@@ -144,7 +142,7 @@
         </div>
         <!-- Payment Methods Accordion / End -->
 
-        <a href="pages-booking-confirmation.html" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Confirm and Pay</a>
+        <button class="button booking-confirmation-btn margin-top-40 margin-bottom-65" @click="handleBooking">Confirm and Pay</button>
       </div>
 
 
@@ -158,8 +156,8 @@
 
             <div class="listing-item-content">
               <div class="numerical-rating" data-rating="5.0"></div>
-              <h3>{{ roomDetail.name }}</h3>
-              <span v-if="roomDetail.locationId">{{ roomDetail.locationId.province }}, {{ roomDetail.locationId.country }}</span>
+              <h3>{{ roomDetail.room_name }}</h3>
+              <span v-if="roomDetail.location_id">{{ roomDetail.location_name }}, {{ roomDetail.province_name }}</span>
             </div>
           </div>
         </div>

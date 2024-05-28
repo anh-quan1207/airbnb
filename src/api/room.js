@@ -7,3 +7,6 @@ export const getRoomDetailAPI = (roomId) => {
   return axiosAPI.get(`/api/room-detail?roomId=${roomId}`);
 };
 
+export const bookingRoomAPI = (data) => {
+    return axiosAPI.post("api/ticket", data);
+}

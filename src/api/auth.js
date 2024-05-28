@@ -1,7 +1,7 @@
 import axiosAPI from ".";
 
 export const signUpAPI = (userRegister) => {
-    return axiosAPI.post(`/api/users`, userRegister);
+    return axiosAPI.post(`/api/user`, userRegister);
 };
 
 export const signInAPI = (userLogin) => {

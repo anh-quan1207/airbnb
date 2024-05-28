@@ -8,6 +8,7 @@
   const store = useStore();
   store.dispatch("room/getRoomDetailAction", route.params.roomId);
   const roomDetail = computed(() => store.state.room.roomDetail);
+
 </script>
 
 <template>
@@ -417,7 +418,7 @@
             </div>
 
             <!-- Book Now -->
-            <router-link to="/booking/1" class="button book-now fullwidth margin-top-5">Request To Book</router-link>
+            <router-link :to="`/booking/${roomDetail.id}`" class="button book-now fullwidth margin-top-5">Request To Book</router-link>
 
             <!-- Estimated Cost -->
             <!-- 				<div class="booking-estimated-cost">

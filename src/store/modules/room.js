@@ -1,4 +1,4 @@
-import {getRoomDetailAPI, getRoomListByLocationAPI} from "@/api/room";
+import {bookingRoomAPI, getRoomDetailAPI, getRoomListByLocationAPI} from "@/api/room";
 
 const state = () => {
   return {
@@ -21,10 +21,19 @@ const actions = {
     const res = await getRoomListByLocationAPI(payload);
     context.commit("setRoomListMutation", res);
   },
+
   async getRoomDetailAction(context, payload) {
     const data= await getRoomDetailAPI(payload);
     context.commit("setRoomDetailMutation", data);
-  }
+  },
+
+    async bookingRoonAction({ commit }, payload) {
+        try {
+            const response = await bookingRoomAPI(payload);
+        } catch (error) {
+            console.error("Error booking room", error);
+        }
+    },
 };
 
 export default {

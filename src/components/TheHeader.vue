@@ -1,14 +1,21 @@
 <script setup>
   import { useStore } from 'vuex';
   import { computed, ref } from 'vue';
+  import {useRouter} from "vue-router";
 
   const store = useStore();
   const userLogin = computed(() => store.state.auth.userLogin);
   const isActive = ref(false);
+  const router = useRouter();
 
   const handleClick = () => {
     isActive.value = !isActive.value;
   };
+
+  const handleLogout = () => {
+    store.dispatch("auth/logoutAction", router);
+  };
+  store.dispatch("auth/loadUserLoginFromLocalStorageAction");
 </script>
 
 <template>
@@ -96,9 +103,7 @@
                   >
                 </li>
                 <li>
-                  <a href="index.html"
-                  ><i class="sl sl-icon-power"></i> Logout</a
-                  >
+                  <a href="#" @click.prevent="handleLogout"><i class="sl sl-icon-power"></i> Logout</a>
                 </li>
               </ul>
             </div>

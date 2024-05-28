@@ -1024,15 +1024,13 @@ body #navigation.style-1 ul ul li:hover ul li a:hover { color: #66676b; }
 /* User Menu Avatar Border */
 .user-name span img {
     border: 3px solid #fff;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
     box-sizing: content-box;
 }
 
 .user-name span {
-	width: 35px;
+	width: 50px;
 	height: 35px;
-	left: -28px;
-	top: -8px;
+	left: -40px;
 }
 
 .user-name span:after {
@@ -7242,7 +7240,7 @@ input#date-picker:hover {
 
 #booking-date-range i {
 	color: #999;
-	background-color: 
+	/*background-color: */
 }
 
 /* Booking Requests Filter / End */
@@ -10953,7 +10951,6 @@ body .notification strong { border: none; }
 /* Tabs Style 1 */
 .style-1 .tabs-container .tab-content {
 	border: none;
-	border-top: 1px solid #e0e0e0;
 	padding: 30px 0 0 0;
 }
 
@@ -17144,7 +17141,6 @@ button.mfp-close {
 	display: inline-block;
 	background-color: #f6f6f6;
 	padding: 35px 40px;
-	margin-bottom: 40px;
 }
 
 .small-dialog-header h3 {

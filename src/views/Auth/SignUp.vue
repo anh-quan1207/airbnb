@@ -1,6 +1,6 @@
 <script setup>
   import {createArrayNumber} from "@/utils/createArrayNumber";
-  import {reactive} from "vue";
+  import { reactive } from "vue";
   import { useStore } from "vuex";
   import { useRouter } from "vue-router";
   const router = useRouter();
@@ -18,26 +18,27 @@
     year: "",
     month: "",
     day: "",
-    gender: false,
+    gender: "female",
     address: "",
   });
   const handleSubmit = () => {
     if (userRegister.password === userRegister.repeatPassword) {
       const data = {
-        name: userRegister.name,
+        user_name: userRegister.name,
         email: userRegister.email,
         password: userRegister.password,
+        password_confirmation: userRegister.repeatPassword,
         phone: userRegister.phone,
         birthday: `${userRegister.year}/${userRegister.month}/${userRegister.day}`,
-        gender: userRegister.gender === "true",
+        gender: userRegister.gender,
         address: userRegister.address,
       };
-      // store.dispatch("auth/signUpAction", { data, router });
+      store.dispatch("auth/signUpAction", {data, router});
     } else {
-      alert("Password not match !");
+      alert("Password not match!");
     }
   };
-  </script>
+</script>
 
 <template>
   <!-- Sign In Popup -->
@@ -49,11 +50,7 @@
 
     <!--Tabs -->
     <div class="sign-in-form style-1">
-      <ul class="tabs-nav">
-        <li class="active">
-          <a href="javascript:void(0)">Register</a>
-        </li>
-      </ul>
+
 
       <div class="tabs-container alt">
         <!-- Register -->
@@ -118,8 +115,8 @@
               <label for="gender"
               >Gender:
                 <select v-model="userRegister.gender">
-                  <option value="true">Male</option>
-                  <option value="false">Famale</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
                 </select>
               </label>
             </p>

@@ -4,7 +4,6 @@
   import { computed } from "vue";
   const store = useStore();
   const roomList = computed(() => store.state.room.roomList);
-  console.log(roomList);
 </script>
 
 <template>

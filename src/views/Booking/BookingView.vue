@@ -7,6 +7,7 @@
   const store = useStore();
   store.dispatch("room/getRoomDetailAction", route.params.roomId);
   const roomDetail = computed(() => store.state.room.roomDetail);
+  console.log(roomDetail)
 </script>
 
 <template>

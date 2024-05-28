@@ -1,4 +1,18 @@
 <script setup>
+  import { reactive } from "vue";
+  import { useStore } from "vuex";
+  import { useRouter } from "vue-router";
+  const router = useRouter();
+
+  const store = useStore();
+  const userLogin = reactive({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = () => {
+    store.dispatch("auth/signInAction", {data: userLogin, router});
+  };
 
 </script>
 
@@ -13,31 +27,25 @@
     <!--Tabs -->
     <div class="sign-in-form style-1">
 
-      <ul class="tabs-nav">
-        <li class="active">
-          <a href="javascript:void(0)">Log In</a>
-        </li>
-      </ul>
-
       <div class="tabs-container alt">
         <!-- Login -->
         <div class="tab-content" id="tab1">
-          <form method="post" class="login">
+          <form @submit.prevent="handleSubmit" class="login">
 
             <p class="form-row form-row-wide">
-              <label for="username">Username:
-                <i class="im im-icon-Male"></i>
-                <input type="text" class="input-text" name="username" id="username" value="" />
+              <label for="email">Email:
+                <i class="im im-icon-Mail"></i>
+                <input type="text" class="input-text" name="email" id="email" value="" v-model="userLogin.email" />
               </label>
             </p>
 
             <p class="form-row form-row-wide">
               <label for="password">Password:
                 <i class="im im-icon-Lock-2"></i>
-                <input class="input-text" type="password" name="password" id="password"/>
+                <input class="input-text" type="password" name="password" id="password" v-model="userLogin.password"/>
               </label>
               <span class="lost_password">
-										<a href="#" >Lost Your Password?</a>
+										<a href="#">Lost Your Password?</a>
 									</span>
             </p>
 

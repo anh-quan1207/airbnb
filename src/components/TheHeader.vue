@@ -88,8 +88,8 @@
               </div>
               <ul>
                 <li>
-                  <a href="dashboard.html"
-                  ><i class="sl sl-icon-settings"></i> Dashboard</a
+                  <router-link :to="`/user-profile/${userLogin.user.id}`"
+                  ><i class="sl sl-icon-settings"></i> Profile</router-link
                   >
                 </li>
                 <li>

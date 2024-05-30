@@ -27,13 +27,13 @@ const actions = {
     context.commit("setRoomDetailMutation", data);
   },
 
-    async bookingRoonAction({ commit }, payload) {
-        try {
-            const response = await bookingRoomAPI(payload);
-        } catch (error) {
-            console.error("Error booking room", error);
-        }
-    },
+  async bookingRoonAction({ commit }, {data}) {
+    try {
+        const response = await bookingRoomAPI(data);
+    } catch (error) {
+        console.error("Error booking room", error);
+    }
+  },
 };
 
 export default {

@@ -1,10 +1,11 @@
 <script setup>
   import { useStore } from 'vuex';
-  import { useRoute } from 'vue-router';
+  import {useRoute, useRouter} from 'vue-router';
   import { computed, reactive } from 'vue';
 
   const route = useRoute();
   const store = useStore();
+  const router = useRouter()
   store.dispatch("room/getRoomDetailAction", route.params.roomId);
 
   const roomDetail = computed(() => store.state.room.roomDetail);
@@ -21,7 +22,8 @@
       check_in: timeBooking.checkIn,
       check_out: timeBooking.checkOut
     };
-    store.dispatch("room/bookingRoonAction", data);
+    store.dispatch("room/bookingRoonAction", {data});
+    router.push(`/user-profile/${user.user.id}`)
   };
 </script>
 

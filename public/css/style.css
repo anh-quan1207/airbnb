@@ -4896,8 +4896,8 @@ button.fs-map-btn.button {
 	overflow: hidden;
 	border-radius: 50%;
 	position: absolute;
-	left: 0;
-	top: -12px;
+	left: 13px;
+	top: 6px;
 	image-rendering: -webkit-optimize-contrast;
 }
 
